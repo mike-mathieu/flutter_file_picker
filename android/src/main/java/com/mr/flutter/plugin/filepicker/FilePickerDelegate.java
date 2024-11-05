@@ -371,7 +371,7 @@ public class FilePickerDelegate implements PluginRegistry.ActivityResultListener
                 final ArrayList<HashMap<String, Object>> files = new ArrayList<>();
 
                 for (FileInfo file : (ArrayList<FileInfo>)data) {
-                    if (file.uri != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && file.uri != null) {
                         this.activity.getContentResolver().takePersistableUriPermission(file.uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     }
                     files.add(file.toMap());
